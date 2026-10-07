@@ -1,4 +1,7 @@
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { GitHubSiteLogo } from "@/components/github-site-logo";
+import { TechnologyLogo } from "@/components/technology-logo";
+import { technologies } from "@/lib/technologies";
 import type { GitHubUser } from "@/lib/github";
 import { useTranslations } from "next-intl";
 
@@ -33,17 +36,24 @@ export function ProfileHero({ profile }: { profile: GitHubUser | null }) {
         <p>{t("introduction.primary")}</p>
         <p>{t("introduction.currentFocus")}</p>
       </div>
-      <div className="mt-(--space-content-media) flex items-center gap-8 text-sm">
-        <a className="text-link py-2" href="mailto:rubyceng0326@gmail.com">
-          {t("links.email")} <span aria-hidden="true">↗</span>
+      <div className="logo-links mt-(--space-content-media)">
+        <a
+          className="logo-link"
+          href="mailto:rubyceng0326@gmail.com"
+          aria-label={t("links.email")}
+          title={t("links.email")}
+        >
+          <TechnologyLogo technology={technologies.gmail} decorative />
         </a>
         <a
-          className="text-link py-2"
+          className="logo-link"
           href={profileUrl}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={t("githubProfileAria", { name })}
+          title={t("links.github")}
         >
-          {t("links.github")} <span aria-hidden="true">↗</span>
+          <GitHubSiteLogo />
         </a>
       </div>
     </header>

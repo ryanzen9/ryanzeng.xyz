@@ -1,6 +1,7 @@
 "use client";
 
 import { Skeleton } from "@/components/ui/skeleton";
+import { GitHubSiteLogo } from "@/components/github-site-logo";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { useEffect, useState } from "react";
@@ -8,6 +9,7 @@ import { GitHubCalendar } from "react-github-calendar";
 
 export function ContributionsCalendar() {
   const t = useTranslations("profile.contributions");
+  const accessibility = useTranslations("accessibility");
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme } = useTheme();
   useEffect(() => {
@@ -25,14 +27,16 @@ export function ContributionsCalendar() {
         </h2>
         <p className="editorial-body">
           {t.rich("description", {
-            profile: (chunks) => (
+            profile: () => (
               <a
                 href="https://github.com/ryanzen9"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-link"
+                className="site-logo-link"
+                aria-label={accessibility("github")}
+                title={accessibility("github")}
               >
-                {chunks}
+                <GitHubSiteLogo />
               </a>
             ),
           })}

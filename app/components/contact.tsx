@@ -1,4 +1,7 @@
 import { useTranslations } from "next-intl";
+import { TechnologyLogo } from "@/components/technology-logo";
+import { technologies } from "@/lib/technologies";
+import { Rss } from "lucide-react";
 
 export function Contact() {
   const t = useTranslations("contact");
@@ -11,12 +14,22 @@ export function Contact() {
         </h2>
         <p className="editorial-body">{t("description")}</p>
       </div>
-      <div className="flex flex-wrap items-center gap-x-8 gap-y-4">
-        <a className="text-link py-2" href="mailto:rubyceng0326@gmail.com">
-          {t("email")} <span aria-hidden="true">↗</span>
+      <div className="logo-links">
+        <a
+          className="logo-link"
+          href="mailto:rubyceng0326@gmail.com"
+          aria-label={t("email")}
+          title={t("email")}
+        >
+          <TechnologyLogo technology={technologies.gmail} decorative />
         </a>
-        <a className="text-link py-2 text-muted-foreground" href="/rss">
-          {t("rss")}
+        <a
+          className="logo-link"
+          href="/rss"
+          aria-label={t("rss")}
+          title={t("rss")}
+        >
+          <Rss size="1em" aria-hidden="true" />
         </a>
       </div>
     </section>

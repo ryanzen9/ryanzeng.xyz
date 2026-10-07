@@ -3,7 +3,7 @@ import { createElement, forwardRef } from "react";
 import {
   ClaudeCode as ClaudeCodeColor,
   CloudflareIcon as CloudflareColor,
-  Cursor as CursorColor,
+  CursorIcon as CursorColor,
   Dart as DartColor,
   DockerIcon as DockerColor,
   DrizzleOrm as DrizzleColor,
@@ -14,11 +14,11 @@ import {
   GithubCopilot as GithubCopilotColor,
   Hono as HonoColor,
   Java as JavaColor,
-  MysqlIcon as MysqlColor,
+  MysqlIcon as MysqlOriginalColor,
   Nestjs as NestjsColor,
   NextjsIcon as NextjsColor,
   NodejsIcon as NodejsColor,
-  Openai as OpenaiColor,
+  OpenaiIcon as OpenaiColor,
   Postgresql as PostgresqlColor,
   Prisma as PrismaColor,
   RedisIcon as RedisColor,
@@ -26,7 +26,7 @@ import {
   SqliteIcon as SqliteColor,
   SupabaseIcon as SupabaseColor,
   TailwindIcon as TailwindColor,
-  Typescript as TypescriptColor,
+  TypescriptIcon as TypescriptColor,
   VercelIcon as VercelColor,
   Vite as ViteColor,
   _React as ReactColor,
@@ -37,7 +37,7 @@ import {
 import {
   ClaudeCode as ClaudeCodeMono,
   CloudflareIcon as CloudflareMono,
-  Cursor as CursorMono,
+  CursorIcon as CursorMono,
   Dart as DartMono,
   DockerIcon as DockerMono,
   DrizzleOrm as DrizzleMono,
@@ -53,7 +53,7 @@ import {
   Nestjs as NestjsMono,
   NextjsIcon as NextjsMono,
   NodejsIcon as NodejsMono,
-  Openai as OpenaiMono,
+  OpenaiIcon as OpenaiMono,
   Postgresql as PostgresqlMono,
   Prisma as PrismaMono,
   RedisIcon as RedisMono,
@@ -61,7 +61,7 @@ import {
   SqliteIcon as SqliteMono,
   SupabaseIcon as SupabaseMono,
   TailwindIcon as TailwindMono,
-  Typescript as TypescriptMono,
+  TypescriptIcon as TypescriptMono,
   VercelIcon as VercelMono,
   Vite as ViteMono,
   _React as ReactMono,
@@ -78,10 +78,32 @@ function createDevIconPair(mono: Icon, color: Icon): DevIconPair {
 }
 
 const springIcons = createDevIconPair(SpringMono, SpringColor);
-const LinuxColor = forwardRef<SVGSVGElement, IconProps>((props, ref) =>
-  createElement(LinuxMono, { ...props, ref, color: "#FCC624" }),
-);
 
+// Trim the padding in the source so the dolphin matches other inline logos.
+const MysqlColor = forwardRef<SVGSVGElement, IconProps>((props, ref) =>
+  createElement(MysqlOriginalColor, {
+    viewBox: "165 167 270 270",
+    ...props,
+    ref,
+  }),
+);
+MysqlColor.displayName = "MysqlColor";
+
+// The package's color Linux component contains non-React SVG attributes.
+// Embed its original SVG to retain the colors without DOM warnings.
+const LinuxColor = forwardRef<SVGSVGElement, IconProps>(
+  ({ size = "1em", alt, ...props }, ref) =>
+    createElement(
+      "svg",
+      { viewBox: "0 0 600 600", width: size, height: size, ...props, ref },
+      alt ? createElement("title", null, alt) : null,
+      createElement("image", {
+        href: "/icons/linux.svg",
+        width: 600,
+        height: 600,
+      }),
+    ),
+);
 LinuxColor.displayName = "LinuxColor";
 
 export const devIcons = {

@@ -1,8 +1,6 @@
 import { useTranslations } from "next-intl";
-
-type Technology = {
-  name: string;
-};
+import { TechnologyLogo } from "@/components/technology-logo";
+import { technologies, type Technology } from "@/lib/technologies";
 
 type TechnologyGroup = {
   key: "build" | "data" | "tooling";
@@ -13,53 +11,58 @@ const TECHNOLOGY_GROUPS: TechnologyGroup[] = [
   {
     key: "build",
     technologies: [
-      { name: "TypeScript" },
-      { name: "Java" },
-      { name: "Dart" },
-      { name: "React" },
-      { name: "Vue" },
-      { name: "Next.js" },
-      { name: "Flutter" },
-      { name: "Tailwind CSS" },
-      { name: "Vite" },
-      { name: "Node.js" },
-      { name: "NestJS" },
-      { name: "Hono" },
-      { name: "Spring Boot" },
+      technologies.typescript,
+      technologies.java,
+      technologies.dart,
+      technologies.react,
+      technologies.vue,
+      technologies.nextjs,
+      technologies.flutter,
+      technologies.tailwind,
+      technologies.vite,
+      technologies.nodejs,
+      technologies.nestjs,
+      technologies.hono,
+      technologies.springBoot,
     ],
   },
   {
     key: "data",
     technologies: [
-      { name: "PostgreSQL" },
-      { name: "MySQL" },
-      { name: "Redis" },
-      { name: "SQLite" },
-      { name: "Supabase" },
-      { name: "Prisma" },
-      { name: "Drizzle" },
-      { name: "EdgeDB" },
+      technologies.postgresql,
+      technologies.mysql,
+      technologies.redis,
+      technologies.sqlite,
+      technologies.supabase,
+      technologies.prisma,
+      technologies.drizzle,
+      technologies.edgedb,
     ],
   },
   {
     key: "tooling",
     technologies: [
-      { name: "Codex" },
-      { name: "Claude Code" },
-      { name: "GitHub Copilot" },
-      { name: "Cursor" },
-      { name: "Docker" },
-      { name: "Git" },
-      { name: "GitHub Actions" },
-      { name: "Cloudflare" },
-      { name: "Vercel" },
-      { name: "Linux" },
+      technologies.codex,
+      technologies.claudeCode,
+      technologies.githubCopilot,
+      technologies.cursor,
+      technologies.docker,
+      technologies.git,
+      technologies.githubActions,
+      technologies.cloudflare,
+      technologies.vercel,
+      technologies.linux,
     ],
   },
 ];
 
-function TechnologyItem({ name }: Technology) {
-  return <li className="text-base leading-7 text-muted-foreground">{name}</li>;
+function TechnologyItem({ technology }: { technology: Technology }) {
+  return (
+    <li className="flex items-center gap-2 text-base leading-7 text-muted-foreground">
+      <TechnologyLogo technology={technology} decorative />
+      <span>{technology.name}</span>
+    </li>
+  );
 }
 
 export function TechStack() {
@@ -89,7 +92,10 @@ export function TechStack() {
                 aria-label={t(`groups.${group.key}.ariaLabel`)}
               >
                 {group.technologies.map((technology) => (
-                  <TechnologyItem key={technology.name} {...technology} />
+                  <TechnologyItem
+                    key={technology.name}
+                    technology={technology}
+                  />
                 ))}
               </ul>
             </div>

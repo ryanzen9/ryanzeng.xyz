@@ -384,6 +384,20 @@ html:has(:focus-visible) .viewport-blur {
 .text-link:hover {
   text-decoration-color: currentColor;
 }
+/* 404: the storm is decoration, the heading below carries the message. */
+.not-found-storm {
+  container-type: inline-size;
+  width: 100%;
+}
+.not-found-storm ascii-art {
+  /* The custom element writes --ascii-size inline (12px by default), so the
+     responsive size has to win with !important. This piece is 96 columns x 34
+     rows and one column is 0.602em wide, so 57.792em is its full width. */
+  --ascii-size: calc(100cqi / 57.792) !important;
+  display: block;
+  width: 100%;
+  min-height: calc(34 * var(--ascii-size));
+}
 .evidence-surface {
   padding: var(--space-media-padding);
   background: var(--color-bg-subtle);

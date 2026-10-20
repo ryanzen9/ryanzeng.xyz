@@ -14,7 +14,6 @@ export const blogLang = "zh-CN";
  * - /rss
  * - /robots.txt
  * - /sitemap.xml
- * - /og
  */
 export function getAbsoluteUrl(pathname: string) {
   return new URL(pathname, siteUrl).toString();

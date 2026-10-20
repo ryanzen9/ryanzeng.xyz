@@ -1,7 +1,7 @@
 import { compilePostMDX } from "@/app/components/mdx";
 import { ReadingProgress } from "@/app/components/reading-progress";
 import { TocSidebar } from "@/app/components/sidebar";
-import { blogLang, getAbsoluteUrl, siteUrl } from "@/lib/site";
+import { blogLang, getAbsoluteUrl } from "@/lib/site";
 import { Metadata } from "next";
 import { getFormatter } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -32,12 +32,7 @@ export async function generateMetadata({ params }): Promise<Metadata> {
     title,
     publishedAt: publishedTime,
     summary: description,
-    image,
   } = post.metadata;
-
-  let ogImage = image
-    ? image
-    : `${siteUrl}/og?title=${encodeURIComponent(title)}`;
 
   return {
     title,
@@ -55,18 +50,12 @@ export async function generateMetadata({ params }): Promise<Metadata> {
       modifiedTime: publishedTime,
       locale: blogLang.replace("-", "_"),
       url: canonicalUrl,
-      images: [
-        {
-          url: ogImage,
-        },
-      ],
     },
 
     twitter: {
       card: "summary_large_image",
       title,
       description,
-      images: [ogImage],
     },
   };
 }
@@ -87,8 +76,8 @@ export default async function Blog({ params }) {
   const url = getAbsoluteUrl(path);
 
   const image = post.metadata.image
-    ? `${siteUrl}${post.metadata.image}`
-    : `${siteUrl}/og?title=${encodeURIComponent(post.metadata.title)}`;
+    ? getAbsoluteUrl(post.metadata.image)
+    : undefined;
 
   return (
     <section id="article-reading-region" className="reading-column relative">
@@ -112,7 +101,7 @@ export default async function Blog({ params }) {
             description: post.metadata.summary,
 
             inLanguage: blogLang,
-            image: image,
+            ...(image ? { image } : {}),
             url: url,
           }),
         }}

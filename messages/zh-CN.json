@@ -5,23 +5,26 @@
     },
     "home": {
         "title": "认真构建，\n如实记录。",
-        "eyebrow": "Ryan Zeng 的个人博客",
-        "introduction": "我是一名来自中国的软件工程师，构建并运维从界面到基础设施的完整产品。",
-        "currentFocus": "目前专注于把 AI Agent 带进真实工作流，同时持续参与开源项目。",
+        "eyebrow": "Ryan Zeng · 软件工程师 · 中国",
+        "introduction": "我是一名来自中国的软件工程师，构建并运维从界面到基础设施的完整产品。目前正把 AI Agent 带进实际工作流，并更多参与开源项目。",
+        "links": {
+            "label": "联系方式与订阅",
+            "email": "邮箱",
+            "github": "GitHub",
+            "rss": "RSS"
+        },
         "latest": {
-            "title": "最近在写",
-            "description": "关于 Web 工程、开发工具与构建过程的实践笔记。"
+            "title": "最近在写"
         },
         "metadata": {
             "title": "主页",
             "description": "欢迎来到我的个人博客，在这里我分享我对技术、编程和生活的思考."
         },
-        "readNotes": "阅读实践笔记",
         "allWriting": "全部文章",
-        "about": "更多关于我",
-        "practice": {
-            "title": "从界面到基础设施",
-            "description": "这里记录开发中的具体问题、工具选择和解决过程。把实践整理成文字，也让下一次构建有迹可循。"
+        "projects": {
+            "title": "项目",
+            "description": "精选作品、实验，以及持续在推进的小项目。",
+            "pending": "内容整理中，敬请期待。"
         }
     },
     "profile": {

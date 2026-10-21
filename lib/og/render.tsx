@@ -1,5 +1,5 @@
-import { ImageResponse } from "next/og";
 import { getTranslations } from "next-intl/server";
+import { ImageResponse } from "next/og";
 
 import { getBlogPosts, parsePublishedAt } from "@/app/[locale]/blog/utils";
 import { ogSize, PostCard, SiteCard } from "@/lib/og/card";
@@ -12,7 +12,7 @@ function getDomain() {
   try {
     return new URL(siteUrl).host;
   } catch {
-    return "blog.ryanzeng.xyz";
+    return "ryanzeng.xyz";
   }
 }
 

@@ -84,6 +84,8 @@
   --font-heading: var(--font-ui-source);
   --font-prose: var(--font-editorial);
   --font-mono: var(--font-code-source);
+  --font-inter: var(--font-inter-source), var(--font-editorial);
+  --font-display: var(--font-display-source), serif;
 
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
@@ -266,6 +268,10 @@ html:has(:focus-visible) .viewport-blur {
   letter-spacing: var(--tracking-display);
   text-wrap: balance;
   overflow-wrap: anywhere;
+}
+.home-intro .editorial-heading {
+  font-weight: 400;
+  letter-spacing: normal;
 }
 .section-heading {
   font-size: var(--font-size-4xl);

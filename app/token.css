@@ -20,7 +20,7 @@
   --color-neutral-900: #171717;
   --color-neutral-950: #0a0a0a;
 
-  --color-bg: var(--color-white);
+  --color-bg: #f5f4f1;
   --color-bg-subtle: var(--color-neutral-50);
   --color-bg-muted: var(--color-neutral-100);
 
@@ -200,7 +200,7 @@
 :root[data-theme="dark"] {
   color-scheme: dark;
 
-  --color-bg: #0d0d0c;
+  --color-bg: #1a1917;
   --color-bg-subtle: #11110f;
   --color-bg-muted: #171715;
 
@@ -241,7 +241,7 @@
   :root:not([data-theme]) {
     color-scheme: dark;
 
-    --color-bg: #0d0d0c;
+    --color-bg: #1a1917;
     --color-bg-subtle: #11110f;
     --color-bg-muted: #171715;
 

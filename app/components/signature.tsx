@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useSyncExternalStore } from "react";
 import type { CSSProperties } from "react";
 import { cn } from "@/lib/utils";
 import { SIGNATURE_PATH_D, SIGNATURE_STROKES } from "./signature-data";
@@ -12,6 +12,21 @@ const VIEWBOX_HEIGHT = 118;
 // the reading column instead of carrying the source file's internal padding.
 const VIEWBOX = "12.2 12.1 191.7 93";
 const MASK_ID = "signature-reveal-mask";
+const DESKTOP_QUERY = "(min-width: 640px)";
+
+function subscribeToViewport(onChange: () => void) {
+  const media = window.matchMedia(DESKTOP_QUERY);
+  media.addEventListener("change", onChange);
+  return () => media.removeEventListener("change", onChange);
+}
+
+function getDesktopSnapshot() {
+  return window.matchMedia(DESKTOP_QUERY).matches;
+}
+
+function getServerSnapshot() {
+  return false;
+}
 
 /** easeInOutSine — the pen speeds up gently, then settles. */
 function easeInOutSine(progress: number) {
@@ -50,6 +65,11 @@ type SignatureProps = {
  * and reduced-motion users get the finished signature immediately.
  */
 export function Signature({ className }: SignatureProps) {
+  const isDesktop = useSyncExternalStore(
+    subscribeToViewport,
+    getDesktopSnapshot,
+    getServerSnapshot,
+  );
   const svgRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
@@ -119,7 +139,11 @@ export function Signature({ className }: SignatureProps) {
     frame = requestAnimationFrame(tick);
 
     return () => cancelAnimationFrame(frame);
-  }, []);
+  }, [isDesktop]);
+
+  if (!isDesktop) {
+    return null;
+  }
 
   return (
     <svg

@@ -4,8 +4,8 @@ import { useTheme } from "next-themes";
 import { useEffect } from "react";
 
 const themeColors = {
-  light: "#ffffff",
-  dark: "#0d0d0c",
+  light: "#f5f4f1",
+  dark: "#1a1917",
 } as const;
 
 export function BrowserChromeTheme() {

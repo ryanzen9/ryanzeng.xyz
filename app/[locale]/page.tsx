@@ -31,11 +31,11 @@ export default async function Page() {
 
   return (
     <div className="editorial-flow">
-      <header className="reading-column relative">
-        <Signature className="pointer-events-none absolute -top-1 right-0 w-20 -rotate-6 sm:-top-2 sm:right-1 sm:w-48" />
-        <p className="editorial-meta mb-6 pr-24 sm:pr-0">{t("eyebrow")}</p>
+      <header className="home-intro reading-column relative font-mono">
+        <Signature className="pointer-events-none absolute -top-2 right-1 w-48 -rotate-6" />
+        <p className="editorial-meta mb-6">{t("eyebrow")}</p>
         <h1 className="editorial-heading whitespace-pre-line">{t("title")}</h1>
-        <p className="editorial-body mt-(--space-content-media)">
+        <p className="mt-(--space-content-media) text-base leading-relaxed text-(--color-text-secondary) sm:text-[15px]">
           {t("introduction")}
         </p>
         <nav

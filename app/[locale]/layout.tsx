@@ -3,7 +3,7 @@ import { ViewportBlur } from "@/app/components/viewport-blur";
 import { ThemeProvider } from "@/components/theme-provider";
 import { Meteors } from "@/components/ui/meteors";
 import { routing } from "@/i18n/routing";
-import { codeFont, uiFont } from "@/lib/fonts";
+import { codeFont, displayFont, interFont, uiFont } from "@/lib/fonts";
 import { siteUrl } from "@/lib/site";
 import { cn } from "@/lib/utils";
 import { Analytics } from "@vercel/analytics/react";
@@ -21,8 +21,8 @@ export const viewport: Viewport = {
   initialScale: 1,
   viewportFit: "cover",
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0d0d0c" },
+    { media: "(prefers-color-scheme: light)", color: "#f5f4f1" },
+    { media: "(prefers-color-scheme: dark)", color: "#1a1917" },
   ],
 };
 
@@ -82,7 +82,13 @@ export default async function RootLayout({
   return (
     <html
       lang={curLocale}
-      className={cn(uiFont.variable, codeFont.variable, "font-sans")}
+      className={cn(
+        uiFont.variable,
+        codeFont.variable,
+        interFont.variable,
+        displayFont.variable,
+        "font-sans",
+      )}
       suppressHydrationWarning
     >
       <NextIntlClientProvider>

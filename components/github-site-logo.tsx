@@ -3,8 +3,7 @@ import Image from "next/image";
 export function GitHubSiteLogo() {
   return (
     <Image
-      // Source: https://github.githubassets.com/favicons/favicon.svg
-      src="/icons/github.svg"
+      src="https://github.githubassets.com/favicons/favicon.svg"
       width={32}
       height={32}
       alt=""

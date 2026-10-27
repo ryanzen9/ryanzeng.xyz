@@ -14,7 +14,7 @@ export function Navbar() {
   return (
     <header>
       <nav
-        className="flex min-h-(--layout-header-height) w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 py-4 font-mono"
+        className="flex min-h-(--layout-header-height) w-full flex-wrap items-center justify-center gap-x-2 gap-y-1 py-4 font-bold"
         aria-label={t("label")}
       >
         <div className="flex min-w-0 flex-wrap items-center justify-center gap-x-0 gap-y-1 sm:gap-x-4">
